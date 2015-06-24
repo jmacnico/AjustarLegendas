@@ -1,0 +1,49 @@
+﻿<Window x:Class="AjustarLegendas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>                
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>            
+                <DockPanel VerticalAlignment="Top" Margin="5">
+                    <Button Content="Selecionar" Click="Button_Click" DockPanel.Dock="Right"/>
+                    <Border BorderThickness="1" BorderBrush="Gray" Margin="0,0,5,0">
+                        <TextBlock Name="txtDiretorio" HorizontalAlignment="Stretch"/>
+                    </Border>
+                </DockPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5,0">
+                    <TextBlock Margin="5,0" Text="Ponto inicial"/>
+                    <TextBox Width="50" Name="txtPi" PreviewTextInput="txtPi_TextChanged"/>
+                    <TextBlock Margin="5,0" Text="Ponto final"/>
+                    <TextBox Width="50" Name="txtPf" PreviewTextInput="txtPi_TextChanged"/>
+                    <TextBlock Margin="5,0" Text="segundos"/>
+                    <TextBox Width="50" Name="txtSegundos" PreviewTextInput="txtPi_TextChanged"/>
+                    <Button Content="alterar +" Click="Button_Click_1" Margin="5,0"/>
+                    <Button Content="alterar -" Click="Button_Click_1"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
+                    <TextBlock Name="txtPaginas" Margin="10,0"/>
+                    <Button Content="gravar" Click="Button_Click_2"/>
+            <TextBox Name="texto" TextWrapping="Wrap" AcceptsReturn="True"/>
+            <Button Name="btnGravarTexto" Content="Gravar Texto" Click="btnGravarTexto_Click"/>
+        </StackPanel>
+        <ListView Margin="5,0" Grid.Row="3" ItemsSource="{Binding lstLegenda}" Name="lst" Height="auto" MinHeight="250" BorderBrush="Gray" BorderThickness="1" SelectionChanged="lst_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}"/>
+                    <GridViewColumn Header="Hora Inicio" DisplayMemberBinding="{Binding horaInicio}"/>
+                    <GridViewColumn Header="Hora Fim" DisplayMemberBinding="{Binding horaFim}"/>
+                    <GridViewColumn Header="Legenda" DisplayMemberBinding="{Binding texto}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
